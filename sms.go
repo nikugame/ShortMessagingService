@@ -6,27 +6,21 @@ import "fmt"
 
 //Message defines how to send sms
 type Message interface {
-	Send(phone []string, message string) (map[string]bool, error)
+	Send(phone string, message string) (map[string]bool, error)
 }
 
 var channels = make(map[string]ShortMessagingService)
 
 //ShortMessagingService is the adapter interface for choose sms channel
 type ShortMessagingService interface {
-	Parse(filename, filetype string) (Message, error)
+	Parse(filename string) (Message, error)
 }
 
 //NewShortMessagingService channel is xiao/beiwei/dayu
 //filetype only support ini
-func NewShortMessagingService(channel, filename, filetype string) (Message, error) {
-	if filetype == "" {
-		filetype = "ini"
-	}
-	if filename == "" {
-		filename = "conf/settings.conf"
-	}
+func NewShortMessagingService(channel, filename string) (Message, error) {
 	if service, ok := channels[channel]; ok {
-		return service.Parse(filename, filetype)
+		return service.Parse(filename)
 	}
 	return nil, fmt.Errorf("unknown sms channel: %q", channel)
 }
