@@ -26,3 +26,12 @@ use
             fmt.Printf("%s send state %b", phone, stat)
         }
     }
+
+
+configure 
+
+    [xiao]
+    uid = "000000"
+    cid = "xxxx"
+    pwd = "xxxxxx"
+    url = "http://xiao.url"
