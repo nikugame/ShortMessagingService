@@ -38,7 +38,7 @@ func LoadConfigure(filename string) (map[string]map[string]string, error) {
 		l := strings.TrimSpace(string(line))
 		if strings.HasPrefix(l, "[") && strings.HasSuffix(l, "]") {
 			l := strings.TrimSpace(l)
-			section = l[1 : len(l)-1]
+			section = strings.ToLower(l[1 : len(l)-1])
 			m = make(map[string]string)
 			continue
 		}
