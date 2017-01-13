@@ -1,6 +1,23 @@
 # sms
 golang send message tools
 
+#### 2017-01-13
+
+add support dayu to send verification code
+
+configure
+
+    [dayu]
+    url = "xxxx"x
+    name = "xxxxx"x
+    key = "xxxx"
+    secert = "xxxx"
+    sign = "xxxxx"
+    template = "xxxxx"
+
+
+#### 2016
+
 support
 
     xiao/beiwei
